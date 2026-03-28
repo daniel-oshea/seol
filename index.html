@@ -21,10 +21,19 @@
             text-align: center;
         }
 
-        header h1 {
-            font-size: 2.4rem;
-            font-weight: 700;
-            letter-spacing: -0.5px;
+        header .logo {
+            width: 96px;
+            height: 96px;
+            border-radius: 22px;
+            margin: 0 auto 16px;
+            display: block;
+        }
+
+        header .wordmark {
+            height: 44px;
+            display: block;
+            margin: 0 auto 4px;
+            filter: brightness(0) invert(1);
         }
 
         header p {
@@ -93,7 +102,8 @@
 <body>
 
 <header>
-    <h1>Seol</h1>
+    <img class="logo" src="seol.png" alt="Seol logo">
+    <img class="wordmark" src="wordmark.png" alt="Seol — Sail Logbook">
     <p>Irish Waters Sailing Log &amp; Passage Planner</p>
 </header>
 
