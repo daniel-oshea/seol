@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seol — Irish Waters Sailing Log</title>
+    <title>Seol — Irish Waters Sailing Log & Passage Planner</title>
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -14,52 +14,101 @@
             line-height: 1.6;
         }
 
+        /* ── Header ── */
         header {
             background: #3a8c8c;
             color: white;
-            padding: 48px 24px 40px;
+            padding: 56px 24px 48px;
             text-align: center;
         }
 
         header .logo {
-            width: 96px;
-            height: 96px;
-            border-radius: 22px;
-            margin: 0 auto 16px;
+            width: 108px;
+            height: 108px;
+            border-radius: 24px;
+            margin: 0 auto 20px;
             display: block;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
         }
 
-        header .wordmark {
-            height: 44px;
-            display: block;
-            margin: 0 auto 4px;
-            filter: brightness(0) invert(1);
+        header h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            margin-bottom: 8px;
         }
 
-        header p {
-            margin-top: 8px;
+        header p.tagline {
             font-size: 1.1rem;
             opacity: 0.88;
+            margin-bottom: 32px;
         }
 
+        .tf-button {
+            display: inline-block;
+            background: white;
+            color: #3a8c8c;
+            font-weight: 600;
+            font-size: 1rem;
+            padding: 14px 32px;
+            border-radius: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.15s, box-shadow 0.15s;
+        }
+
+        .tf-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .tf-button small {
+            display: block;
+            font-size: 0.75rem;
+            font-weight: 400;
+            opacity: 0.7;
+            margin-top: 2px;
+        }
+
+        /* ── Beta banner ── */
+        .beta-banner {
+            background: #fff8e6;
+            border-left: 4px solid #f0a500;
+            padding: 14px 20px;
+            margin: 24px auto 0;
+            max-width: 720px;
+            border-radius: 0 8px 8px 0;
+            font-size: 0.9rem;
+            color: #7a5800;
+        }
+
+        /* ── Main layout ── */
         main {
-            max-width: 680px;
-            margin: 48px auto;
+            max-width: 720px;
+            margin: 40px auto;
             padding: 0 24px;
         }
 
+        /* ── Section cards ── */
         section {
             background: white;
-            border-radius: 12px;
+            border-radius: 14px;
             padding: 32px;
             margin-bottom: 24px;
         }
 
         section h2 {
-            font-size: 1.15rem;
-            font-weight: 600;
-            margin-bottom: 12px;
-            color: #3a8c8c;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: #1c1c1e;
+        }
+
+        section .section-sub {
+            font-size: 0.95rem;
+            color: #8e8e93;
+            margin-bottom: 20px;
         }
 
         section p {
@@ -69,19 +118,113 @@
 
         section p:last-child { margin-bottom: 0; }
 
-        ul {
-            padding-left: 20px;
+        /* ── Getting started steps ── */
+        .steps {
+            counter-reset: step;
+            list-style: none;
+            padding: 0;
+        }
+
+        .steps li {
+            counter-increment: step;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            margin-bottom: 20px;
             color: #3c3c43;
         }
 
-        ul li { margin-bottom: 6px; }
+        .steps li:last-child { margin-bottom: 0; }
 
+        .steps li::before {
+            content: counter(step);
+            background: #3a8c8c;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .steps li strong {
+            display: block;
+            color: #1c1c1e;
+            margin-bottom: 2px;
+        }
+
+        /* ── Feature rows (screenshot + text) ── */
+        .feature {
+            display: flex;
+            gap: 28px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+        }
+
+        .feature:last-child { margin-bottom: 0; }
+
+        .feature.reverse { flex-direction: row-reverse; }
+
+        .feature-text { flex: 1; }
+
+        .feature-text h3 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1c1c1e;
+            margin-bottom: 6px;
+        }
+
+        .feature-text p {
+            font-size: 0.95rem;
+            color: #3c3c43;
+            margin-bottom: 0;
+        }
+
+        .feature-img {
+            flex: 0 0 150px;
+            width: 150px;
+        }
+
+        .feature-img img {
+            width: 100%;
+            border-radius: 18px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            display: block;
+        }
+
+        /* ── Feature grid (no screenshots) ── */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 8px;
+        }
+
+        .feature-item h3 {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: #1c1c1e;
+            margin-bottom: 4px;
+        }
+
+        .feature-item p {
+            font-size: 0.875rem;
+            color: #6c6c70;
+            margin-bottom: 0;
+        }
+
+        /* ── Links ── */
         a { color: #3a8c8c; text-decoration: none; }
         a:hover { text-decoration: underline; }
 
         .contact-link {
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 12px;
             background: #3a8c8c;
             color: white;
             padding: 10px 20px;
@@ -91,61 +234,214 @@
 
         .contact-link:hover { background: #2e7070; text-decoration: none; }
 
+        /* ── Footer ── */
         footer {
             text-align: center;
             padding: 32px 24px;
             color: #8e8e93;
             font-size: 0.85rem;
         }
+
+        /* ── Responsive ── */
+        @media (max-width: 540px) {
+            header h1 { font-size: 1.6rem; }
+            .feature, .feature.reverse { flex-direction: column; }
+            .feature-img { width: 100%; max-width: 200px; margin: 0 auto; }
+            .feature-grid { grid-template-columns: 1fr; }
+            section { padding: 24px; }
+        }
     </style>
 </head>
 <body>
 
 <header>
-    <img class="logo" src="seol.png" alt="Seol logo">
-    <img class="wordmark" src="wordmark.png" alt="Seol — Sail Logbook">
-    <p>Irish Waters Sailing Log &amp; Passage Planner</p>
+    <img class="logo" src="seol.png" alt="Seol app icon">
+    <h1>Seol</h1>
+    <p class="tagline">Sailing Log &amp; Passage Planner for Irish Waters</p>
+    <a class="tf-button" href="https://testflight.apple.com/join/YOURLINK">
+        Join the Beta on TestFlight
+        <small>Free · iOS · No account required</small>
+    </a>
 </header>
 
 <main>
 
-    <section>
-        <h2>About</h2>
-        <p>Seol is a native iOS app for planning and recording sailing passages in Irish waters. Keep a proper ship's log, track tidal information, manage your crew and sail inventory, and build a record of every passage.</p>
-        <p>Your data is stored on your device and synced privately via iCloud — it is never shared with third parties.</p>
+    <div class="beta-banner">
+        <strong>Beta release.</strong> Seol is currently in beta testing. You may encounter rough edges — feedback is very welcome at <a href="mailto:dan@ontherack.net">dan@ontherack.net</a>
+    </div>
+
+    <!-- About -->
+    <section style="margin-top: 24px;">
+        <h2>About Seol</h2>
+        <p class="section-sub">Seol (Irish for "sail") is a native iOS app for planning and recording sailing passages in Irish waters.</p>
+        <p>Plan your passage before you leave, log it as you sail, and review it when you're back. Tidal predictions, crew, waypoints, weather, and your ship's log — all in one place, synced privately across your devices via iCloud.</p>
+        <p>Your data is stored on your device and synced via iCloud. It is never shared with third parties.</p>
     </section>
 
+    <!-- Getting Started -->
+    <section>
+        <h2>Getting Started</h2>
+        <p class="section-sub">Up and running in a few minutes.</p>
+        <ol class="steps">
+            <li>
+                <div>
+                    <strong>Set up your vessel</strong>
+                    Go to the Vessel tab and enter your boat name, type, call sign, and MMSI. Add your sails to the wardrobe.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <strong>Create a passage</strong>
+                    Tap + on the home screen. Enter your departure and destination, add waypoints, and set your departure date. Tidal predictions and weather will load automatically.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <strong>Check your tides</strong>
+                    Open the Tides tab on your passage. Review HW/LW times and the tidal curve for your ports. Adjust if needed.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <strong>Start the passage</strong>
+                    When ready to go, tap Start Passage. GPS positions log automatically. Add manual log entries as you go.
+                </div>
+            </li>
+            <li>
+                <div>
+                    <strong>Complete and review</strong>
+                    Tap Complete Passage when you arrive. Your logbook summary updates automatically with distance, sea time, and engine hours.
+                </div>
+            </li>
+        </ol>
+    </section>
+
+    <!-- Features with screenshots -->
     <section>
         <h2>Features</h2>
-        <ul>
-            <li>Passage planning with departure and arrival ports</li>
-            <li>Live tidal predictions for Irish Marine Institute gauge stations</li>
-            <li>Secondary port tidal data via WorldTides</li>
-            <li>Automatic GPS track logging while underway</li>
-            <li>Ship's log with timestamped entries</li>
-            <li>Weather observations and VHF radio log</li>
-            <li>Crew and sail inventory management</li>
-            <li>Pilotage guides for harbour approaches</li>
-            <li>iCloud sync across your devices</li>
-        </ul>
+        <p class="section-sub">Everything you need from planning to arrival.</p>
+
+        <div class="feature">
+            <div class="feature-img">
+                <img src="screenshots/passages.PNG" alt="Passage list">
+            </div>
+            <div class="feature-text">
+                <h3>Passage Planning &amp; Logging</h3>
+                <p>Create passages with departure and destination ports, waypoints, crew, and sails. GPS positions log automatically while underway. Add timestamped log entries for wind, sail changes, engine use, and incidents. Review completed passages in your logbook.</p>
+            </div>
+        </div>
+
+        <div class="feature reverse">
+            <div class="feature-img">
+                <img src="screenshots/tides.PNG" alt="Tidal predictions">
+            </div>
+            <div class="feature-text">
+                <h3>Live Tidal Predictions</h3>
+                <p>HW/LW times and heights from the Marine Institute Ireland and UKHO for Irish and UK ports. Tidal curve shows your depth window at any point in the passage. Springs and neaps clearly marked.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-img">
+                <img src="screenshots/weather.PNG" alt="Weather forecasts">
+            </div>
+            <div class="feature-text">
+                <h3>Weather</h3>
+                <p>Sea area forecasts from Met Éireann fetched at passage creation. Record weather observations en route and compare against the forecast afterwards.</p>
+            </div>
+        </div>
+
+        <div class="feature reverse">
+            <div class="feature-img">
+                <img src="screenshots/pilotage.PNG" alt="Pilotage guide">
+            </div>
+            <div class="feature-text">
+                <h3>Pilotage Guides</h3>
+                <p>Build reusable harbour entry guides with step-by-step cards. Each card shows depth clearance, bearing transits, and VHF channels. Work through card by card on approach with live tidal depth calculations. Night mode included.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-img">
+                <img src="screenshots/anchorwatch.PNG" alt="Anchor watch">
+            </div>
+            <div class="feature-text">
+                <h3>Anchor Watch</h3>
+                <p>Scope calculator accounts for depth, tidal rise, chain, and warp. Arm the alarm and Seol monitors your position — alert fires if the boat drags beyond your set radius.</p>
+            </div>
+        </div>
+
+        <div class="feature reverse">
+            <div class="feature-img">
+                <img src="screenshots/logbook.PNG" alt="Logbook summary">
+            </div>
+            <div class="feature-text">
+                <h3>Logbook Summary</h3>
+                <p>Total distance, sea time, night hours, engine hours, and fuel — year to date and all time. Monthly distance chart, route breakdown, and sail usage statistics across your entire logbook.</p>
+            </div>
+        </div>
+
+        <div class="feature">
+            <div class="feature-img">
+                <img src="screenshots/maintenance.PNG" alt="Maintenance log">
+            </div>
+            <div class="feature-text">
+                <h3>Vessel &amp; Maintenance</h3>
+                <p>Vessel profile with registration, call sign, and MMSI. Sail wardrobe with usage tracking. Maintenance log with service reminders by date or engine hours. Equipment inventory with low-stock and expiry alerts. PDF export for both.</p>
+            </div>
+        </div>
+
     </section>
 
+    <!-- Also includes -->
+    <section>
+        <h2>Also Includes</h2>
+        <div class="feature-grid">
+            <div class="feature-item">
+                <h3>Float Plan</h3>
+                <p>Generate and share a formatted float plan with vessel details, crew manifest, and waypoints before departure.</p>
+            </div>
+            <div class="feature-item">
+                <h3>iCloud Sync</h3>
+                <p>Passages, vessel records, and pilotage guides sync privately across all your iOS devices.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Offline Use</h3>
+                <p>Works fully offline once tidal and weather data is loaded. No connection needed at sea.</p>
+            </div>
+            <div class="feature-item">
+                <h3>PDF Export</h3>
+                <p>Export your maintenance log and equipment inventory as PDFs for insurance or yard records.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Designed for Ireland</h3>
+                <p>All Irish sea areas. Magnetic variation pre-set for Irish coastal waters.</p>
+            </div>
+            <div class="feature-item">
+                <h3>No Account Required</h3>
+                <p>No sign-up, no subscription. Your data stays on your device and iCloud account.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Support -->
     <section>
         <h2>Support</h2>
-        <p>If you have a question, found a bug, or would like to suggest a feature, get in touch by email.</p>
+        <p>If you have a question, found a bug, or would like to suggest a feature, get in touch by email. During the beta, feedback on anything confusing or missing is especially welcome.</p>
         <a class="contact-link" href="mailto:dan@ontherack.net">Contact Support</a>
     </section>
 
+    <!-- Privacy -->
     <section>
         <h2>Privacy</h2>
-        <p>Seol collects only the data you enter and the GPS positions recorded during your passages. All data is stored on your device and synced via iCloud. No data is sold, shared, or used for advertising.</p>
+        <p>Seol collects only the data you enter and the GPS positions recorded during your passages. All data is stored on your device and synced via iCloud. No data is sold, shared, or used for advertising. No analytics or tracking SDKs are included.</p>
         <p><a href="privacy.html">Read the full Privacy Policy →</a></p>
     </section>
 
 </main>
 
 <footer>
-    <p>&copy; 2026 Daniel O'Shea. All rights reserved.</p>
+    <p>&copy; 2026 Daniel O'Shea &nbsp;·&nbsp; <a href="mailto:dan@ontherack.net">dan@ontherack.net</a></p>
 </footer>
 
 </body>
